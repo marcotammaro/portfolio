@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/palette.dart';
 import 'package:portfolio/views/homepage.dart';
 
 void main() {
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
       title: 'Portfolio',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Roboto',
-        primarySwatch: Colors.blue,
+        fontFamily: 'FiraCode',
+        backgroundColor: Palette.backgroundColor,
+        primaryColor: Palette.mainColor,
       ),
       home: HomePage(),
     );
