@@ -31,7 +31,7 @@ class _AboutState extends State<About> {
     final birthday = DateTime(1999, 05, 29);
     final now = DateTime.now();
     final difference = now.difference(birthday).inDays;
-    final age = difference ~/ 365;
+    final age = (difference / 365).floor();
 
     return Column(
       children: [

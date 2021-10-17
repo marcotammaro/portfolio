@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/_components.dart';
+import 'package:portfolio/views/_views.dart';
 
 import 'about.dart';
 
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                   const SizedBox(height: 40),
-                  About(),
+                  body(_currentIndex),
                 ],
               ),
             ),
@@ -50,5 +51,18 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Widget body(int index) {
+    switch (index) {
+      case 0:
+        return About();
+      case 1:
+        return Projects();
+      case 2:
+        return Contacts();
+      default:
+        return const SizedBox.shrink();
+    }
   }
 }
