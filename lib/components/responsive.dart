@@ -10,7 +10,7 @@ class Responsive extends StatelessWidget {
     required this.tablet,
   }) : super(key: key);
 
-  static const double mobileTabletTheshold = 1000;
+  static const double mobileTabletTheshold = 900;
 
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < mobileTabletTheshold;

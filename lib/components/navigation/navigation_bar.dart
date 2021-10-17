@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:portfolio/components/navigation/navigator_bar_tab.dart';
-import 'package:portfolio/components/responsive.dart';
+import 'package:portfolio/components/_components.dart';
 import 'package:portfolio/palette.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -38,7 +36,7 @@ class _NavigationBarState extends State<NavigationBar> {
     super.initState();
 
     // Initializing values
-    this._title = "> cd " + widget.pages[widget.initialIndex];
+    this._title = getTitle(widget.pages[widget.initialIndex]);
     this._currentTabTitle = this._title;
     this._showTabsOnMobile = false;
     this._blinkingUnderscore = false;
@@ -47,7 +45,9 @@ class _NavigationBarState extends State<NavigationBar> {
     _blinkingUnderscoreTimer = Timer.periodic(
       const Duration(milliseconds: 500),
       (timer) {
-        setState(() => _blinkingUnderscore = !_blinkingUnderscore);
+        setState(() {
+          _blinkingUnderscore = !_blinkingUnderscore;
+        });
       },
     );
   }
@@ -60,72 +60,78 @@ class _NavigationBarState extends State<NavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Responsive.mobileTabletTheshold,
-      padding: EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              titleBox(),
-              Responsive.isMobile(context)
-                  ? mobileButton()
-                  : const SizedBox.shrink()
-            ],
-          ),
-          (Responsive.isTablet(context) || _showTabsOnMobile)
-              ? const SizedBox(height: 20)
-              : const SizedBox.shrink(),
-          (Responsive.isTablet(context) || _showTabsOnMobile)
-              ? Container(
-                  height: Responsive.isMobile(context)
-                      ? (_tabHeigth * widget.pages.length).toDouble()
-                      : _tabHeigth,
-                  child: ListView.builder(
-                      scrollDirection: Responsive.isMobile(context)
-                          ? Axis.vertical
-                          : Axis.horizontal,
-                      itemCount: widget.pages.length,
-                      itemBuilder: (context, index) {
-                        String title = widget.pages[index];
-                        return NavigationBarTab(
-                          title: title,
-                          heigth: _tabHeigth,
-                          onTap: () {
-                            setState(() {
-                              this._title = "> cd " + title;
-                              this._currentTabTitle = "> cd " + title;
-                            });
-                            if (widget.onIndexChange != null)
-                              widget.onIndexChange!(index);
-                          },
-                          hovering: (isHovering) {
-                            setState(() => this._title = isHovering
-                                ? "> cd " + widget.pages[index]
-                                : _currentTabTitle);
-                          },
-                        );
-                      }),
-                )
-              : const SizedBox.shrink(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(child: titleBox()),
+            Responsive.isMobile(context)
+                ? mobileButton()
+                : const SizedBox.shrink(),
+          ],
+        ),
+        (Responsive.isTablet(context) || _showTabsOnMobile)
+            ? const SizedBox(height: 20)
+            : const SizedBox.shrink(),
+        (Responsive.isTablet(context) || _showTabsOnMobile)
+            ? Container(
+                height: Responsive.isMobile(context)
+                    ? (_tabHeigth * widget.pages.length).toDouble()
+                    : _tabHeigth,
+                child: ListView.builder(
+                    scrollDirection: Responsive.isMobile(context)
+                        ? Axis.vertical
+                        : Axis.horizontal,
+                    itemCount: widget.pages.length,
+                    itemBuilder: (context, index) {
+                      String title = widget.pages[index];
+                      return NavigationBarTab(
+                        title: title,
+                        heigth: _tabHeigth,
+                        onTap: () {
+                          setState(() {
+                            this._title = getTitle(title);
+                            this._currentTabTitle = getTitle(title);
+                          });
+                          if (widget.onIndexChange != null)
+                            widget.onIndexChange!(index);
+                        },
+                        hovering: (isHovering) {
+                          setState(() => this._title = isHovering
+                              ? _currentTabTitle + " cd " + widget.pages[index]
+                              : _currentTabTitle);
+                        },
+                      );
+                    }),
+              )
+            : const SizedBox.shrink(),
+      ],
     );
+  }
+
+  String getTitle(String text) {
+    return text + " >";
   }
 
   /// The box that containe the current nav page
   Widget titleBox() {
     return Container(
-      padding: const EdgeInsets.all(15),
+      height: 50,
       color: Palette.mainColor,
-      child: Text(
-        _blinkingUnderscore ? _title + "_" : _title + " ",
-        style: TextStyle(
-          fontWeight: FontWeight.w400,
-          fontSize: 15,
-          color: Palette.backgroundColor,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Text(
+            _blinkingUnderscore ? _title + "_" : _title + " ",
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 15,
+              color: Palette.backgroundColor,
+            ),
+          ),
         ),
       ),
     );
@@ -134,13 +140,30 @@ class _NavigationBarState extends State<NavigationBar> {
   /// Define the three bars in the upper right corner of
   /// mobile device used to show the tabBoxes
   Widget mobileButton() {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () => setState(() => _showTabsOnMobile = !_showTabsOnMobile),
-        child: Icon(
-          FontAwesomeIcons.bars,
-          color: Palette.mainColor,
+    return Container(
+      height: 50,
+      color: Palette.mainColor,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            right: 10.0, // the actual right padding is 20.0 (look at children)
+          ),
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () =>
+                  setState(() => _showTabsOnMobile = !_showTabsOnMobile),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Icon(
+                  FontAwesomeIcons.bars,
+                  size: 18,
+                  color: Palette.backgroundColor,
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
