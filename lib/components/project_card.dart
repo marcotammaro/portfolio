@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/palette.dart';
-import 'dart:html' as html;
 
 class ProjectCard extends StatefulWidget {
   const ProjectCard({
