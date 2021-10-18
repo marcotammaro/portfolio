@@ -5,13 +5,13 @@ class CustomTextWithDates extends StatefulWidget {
   const CustomTextWithDates({
     Key? key,
     required this.title,
-    required this.text,
     required this.period,
+    this.text,
     this.noBottomPadding = false,
   }) : super(key: key);
 
   final String title;
-  final String text;
+  final String? text;
   final String period;
   final bool noBottomPadding;
 
@@ -47,10 +47,12 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  widget.text,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
+                widget.text != null
+                    ? Text(
+                        widget.text!,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    : const SizedBox.shrink(),
                 SizedBox(height: widget.noBottomPadding ? 0 : 20),
               ],
             ),

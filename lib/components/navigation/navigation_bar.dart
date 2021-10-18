@@ -66,9 +66,9 @@ class _NavigationBarState extends State<NavigationBar> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: titleBox()),
+            Expanded(child: titleBox),
             Responsive.isMobile(context)
-                ? mobileButton()
+                ? mobileButton
                 : const SizedBox.shrink(),
           ],
         ),
@@ -78,7 +78,7 @@ class _NavigationBarState extends State<NavigationBar> {
         (Responsive.isTablet(context) || _showTabsOnMobile)
             ? Wrap(
                 direction: Axis.horizontal,
-                children: tabs(),
+                children: tabs,
               )
             : const SizedBox.shrink(),
       ],
@@ -91,7 +91,7 @@ class _NavigationBarState extends State<NavigationBar> {
   }
 
   /// The box that containe the current nav page
-  Widget titleBox() {
+  Widget get titleBox {
     return Container(
       height: _tabHeigth,
       color: Palette.mainColor,
@@ -113,7 +113,7 @@ class _NavigationBarState extends State<NavigationBar> {
   }
 
   /// The available tabs under the title
-  List<Widget> tabs() {
+  List<Widget> get tabs {
     return List.generate(
       widget.pages.length,
       (index) {
@@ -140,7 +140,7 @@ class _NavigationBarState extends State<NavigationBar> {
 
   /// Define the three bars in the upper right corner of
   /// mobile device used to show the tabBoxes
-  Widget mobileButton() {
+  Widget get mobileButton {
     return Container(
       height: 50,
       color: Palette.mainColor,

@@ -16,20 +16,20 @@ class _AboutState extends State<About> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        biography(),
-        divider(),
-        experiences(),
-        divider(),
-        education(),
-        divider(),
-        languages(),
-        divider(),
-        certifications(),
+        biography,
+        divider,
+        experiences,
+        divider,
+        education,
+        divider,
+        certifications,
+        divider,
+        languages,
       ],
     );
   }
 
-  Widget biography() {
+  Widget get biography {
     final birthday = DateTime(1999, 05, 29);
     final now = DateTime.now();
     final difference = now.difference(birthday).inDays;
@@ -62,7 +62,7 @@ class _AboutState extends State<About> {
     );
   }
 
-  Widget experiences() {
+  Widget get experiences {
     return Column(
       children: [
         CustomText(
@@ -89,7 +89,7 @@ class _AboutState extends State<About> {
     );
   }
 
-  Widget education() {
+  Widget get education {
     return Column(
       children: [
         CustomText(
@@ -117,7 +117,48 @@ class _AboutState extends State<About> {
     );
   }
 
-  Widget languages() {
+  Widget get certifications {
+    return Column(
+      children: [
+        CustomText(
+          text: "Certifications",
+          style: CustomTextStyle.h2,
+        ),
+        CustomTextWithDates(
+          title: 'Apple Swift Student Challenge WWDC 2020 winner',
+          period: '16 Jun 2020',
+          noBottomPadding: true,
+        ),
+        CustomTextWithDates(
+          title: 'GDPR regulation',
+          period: '21 May 2020',
+          noBottomPadding: true,
+        ),
+        CustomTextWithDates(
+          title: 'FileMaker Pro Advanced Developer Training',
+          period: '13 Sep 2019',
+          noBottomPadding: true,
+        ),
+        CustomTextWithDates(
+          title: 'CISCO CCNA1 Certification',
+          period: '19 Jun 2019',
+          noBottomPadding: true,
+        ),
+        CustomTextWithDates(
+          title: '1st prize at HACK.GOV - Ericsson Challenge',
+          period: '06 May 2019',
+          noBottomPadding: true,
+        ),
+        CustomTextWithDates(
+          title: 'Google Digital Marketing Training course',
+          period: '13 May 2018',
+          noBottomPadding: true,
+        ),
+      ],
+    );
+  }
+
+  Widget get languages {
     return Column(
       children: [
         CustomText(
@@ -155,97 +196,7 @@ class _AboutState extends State<About> {
     );
   }
 
-  Widget certifications() {
-    return Column(
-      children: [
-        CustomText(
-          text: "Certifications",
-          style: CustomTextStyle.h2,
-        ),
-        CustomText(
-          text: "Apple Swift Student Challenge WWDC 2020 winner",
-          style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
-        ),
-        CustomText(
-          text: "CISCO CCNA1 Certification",
-          style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
-        ),
-        CustomText(
-          text: "1st prize at HACK.GOV - Ericsson Challenge",
-          style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
-        ),
-        CustomText(
-          text: "FileMaker Pro Advanced Developer Training",
-          style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
-        ),
-        CustomText(
-          text: "Google Digital Marketing Training course",
-          style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
-        ),
-        CustomText(
-          noBottomPadding: true,
-          text: "GDPR regulation",
-          style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget divider() {
+  Widget get divider {
     return Column(
       children: [
         const SizedBox(height: 40),
