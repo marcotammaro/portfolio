@@ -85,12 +85,21 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 40),
                   tabs[tabs.keys.elementAt(_currentIndex)]!,
+                  const SizedBox(height: 40),
+                  copyright(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget copyright() {
+    return Text(
+      "© 2021 Marco Tammaro",
+      style: Theme.of(context).textTheme.headline4,
     );
   }
 

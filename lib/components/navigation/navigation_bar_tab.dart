@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/components/responsive.dart';
 import 'package:portfolio/palette.dart';
 
 class NavigationBarTab extends StatefulWidget {
@@ -21,6 +20,7 @@ class NavigationBarTab extends StatefulWidget {
 }
 
 class _NavigationBarTabState extends State<NavigationBarTab> {
+  static const double _borderWidth = 2;
   bool _isHovering = false;
 
   @override
@@ -49,7 +49,7 @@ class _NavigationBarTabState extends State<NavigationBarTab> {
               child: GestureDetector(
                 onTap: widget.onTap,
                 child: Container(
-                  padding: const EdgeInsets.all(2),
+                  padding: const EdgeInsets.all(_borderWidth),
                   color: Palette.secondaryColor,
                   child: Container(
                     color: _isHovering
@@ -59,13 +59,11 @@ class _NavigationBarTabState extends State<NavigationBarTab> {
                     child: Center(
                       child: Text(
                         widget.title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                          color: _isHovering
-                              ? Palette.backgroundColor
-                              : Palette.secondaryColor,
-                        ),
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                              color: _isHovering
+                                  ? Palette.backgroundColor
+                                  : Palette.secondaryColor,
+                            ),
                       ),
                     ),
                   ),

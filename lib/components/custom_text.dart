@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 enum CustomTextStyle { h1, h2, h3, p }
 
 class CustomText extends StatefulWidget {
-  const CustomText(
-      {Key? key,
-      required this.text,
-      this.style,
-      this.color,
-      this.leading,
-      this.tab = 0})
-      : super(key: key);
+  const CustomText({
+    Key? key,
+    required this.text,
+    this.style,
+    this.color,
+    this.leading,
+    this.tab = 0,
+    this.noBottomPadding = false,
+  }) : super(key: key);
 
   final String text;
   final CustomTextStyle? style;
   final Color? color;
   final Widget? leading;
   final int tab;
+  final bool noBottomPadding;
 
   @override
   _CustomTextState createState() => _CustomTextState();
@@ -26,7 +28,7 @@ class _CustomTextState extends State<CustomText> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: EdgeInsets.only(bottom: widget.noBottomPadding ? 0 : 20.0),
       child: Row(
         children: [
           SizedBox(width: widget.tab * 20),

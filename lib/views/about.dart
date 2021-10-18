@@ -17,13 +17,13 @@ class _AboutState extends State<About> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         biography(),
-        const SizedBox(height: 20),
+        divider(),
         experiences(),
-        const SizedBox(height: 20),
+        divider(),
         education(),
-        const SizedBox(height: 20),
+        divider(),
         languages(),
-        const SizedBox(height: 20),
+        divider(),
         certifications(),
       ],
     );
@@ -54,6 +54,7 @@ class _AboutState extends State<About> {
               "Able to create efficient algorithm and data structure and to manage databases like Firebase, iCloud and Realm or SQL/NoSQL databases.",
         ),
         CustomText(
+          noBottomPadding: true,
           text:
               "I truly love working in group because I'm convinced that teamworking stimulates and improves long work sessions and thanks to shared knowledge everyone can improve himself.",
         ),
@@ -79,6 +80,7 @@ class _AboutState extends State<About> {
           period: '2019 - 2020',
         ),
         CustomTextWithDates(
+          noBottomPadding: true,
           title: 'Apple Developer Academy',
           text: 'Student',
           period: '2018 - 2019',
@@ -95,17 +97,18 @@ class _AboutState extends State<About> {
           style: CustomTextStyle.h2,
         ),
         CustomTextWithDates(
-          title: 'Università Degli Studi di Napoli "Federico II"',
+          title: 'Università degli Studi di Napoli "Federico II"',
           text: 'Computer engineering (master)',
           period: '2021 - On Going',
         ),
         CustomTextWithDates(
-          title: 'Università Degli Studi di Napoli "Federico II"',
+          title: 'Università degli Studi di Napoli "Federico II"',
           text:
               'Computer engineering graduated with 99/110\nThesis title: Adversary emulation techniques for cyersecurity assessment',
           period: '2017 - 2020',
         ),
         CustomTextWithDates(
+          noBottomPadding: true,
           title: 'Liceo Scientifico Statale "Piero Calamandrei"',
           text: 'Scientific High School Diploma',
           period: '2012 - 2017',
@@ -135,6 +138,7 @@ class _AboutState extends State<About> {
           ),
         ),
         CustomText(
+          noBottomPadding: true,
           text: "English",
           style: CustomTextStyle.p,
           tab: 1,
@@ -224,6 +228,7 @@ class _AboutState extends State<About> {
           ),
         ),
         CustomText(
+          noBottomPadding: true,
           text: "GDPR regulation",
           style: CustomTextStyle.p,
           tab: 1,
@@ -236,6 +241,19 @@ class _AboutState extends State<About> {
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget divider() {
+    return Column(
+      children: [
+        const SizedBox(height: 40),
+        Divider(
+          color: Palette.mainColor,
+          thickness: 2,
+        ),
+        const SizedBox(height: 40),
       ],
     );
   }

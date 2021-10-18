@@ -40,6 +40,12 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.normal,
             height: 1.5,
           ),
+          headline4: TextStyle(
+            color: Palette.tertiaryColor,
+            fontSize: 12,
+            fontWeight: FontWeight.normal,
+            height: 1.5,
+          ),
         ),
       ),
       home: HomePage(),
