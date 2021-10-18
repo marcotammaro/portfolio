@@ -26,51 +26,54 @@ class _NavigationBarTabState extends State<NavigationBarTab> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.heigth,
-      padding: EdgeInsets.only(
-        right: Responsive.isMobile(context) ? 0 : 20,
-        top: 10,
-        bottom: 10,
-      ),
-      child: MouseRegion(
-        onEnter: (event) {
-          if (widget.hovering != null) widget.hovering!(true);
-          setState(() {
-            _isHovering = true;
-          });
-        },
-        onExit: (event) {
-          if (widget.hovering != null) widget.hovering!(false);
-          setState(() {
-            _isHovering = false;
-          });
-        },
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: widget.onTap,
-          child: Container(
-            padding: const EdgeInsets.all(2),
-            color: Palette.secondaryColor,
-            child: Container(
-              color: _isHovering
-                  ? Palette.secondaryColor
-                  : Palette.backgroundColor,
-              padding: const EdgeInsets.all(10),
-              child: Center(
-                child: Text(
-                  widget.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15,
+      margin: EdgeInsets.only(right: 10, bottom: 10),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: widget.heigth,
+            child: MouseRegion(
+              onEnter: (event) {
+                if (widget.hovering != null) widget.hovering!(true);
+                setState(() {
+                  _isHovering = true;
+                });
+              },
+              onExit: (event) {
+                if (widget.hovering != null) widget.hovering!(false);
+                setState(() {
+                  _isHovering = false;
+                });
+              },
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: widget.onTap,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  color: Palette.secondaryColor,
+                  child: Container(
                     color: _isHovering
-                        ? Palette.backgroundColor
-                        : Palette.secondaryColor,
+                        ? Palette.secondaryColor
+                        : Palette.backgroundColor,
+                    padding: const EdgeInsets.all(10),
+                    child: Center(
+                      child: Text(
+                        widget.title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                          color: _isHovering
+                              ? Palette.backgroundColor
+                              : Palette.secondaryColor,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

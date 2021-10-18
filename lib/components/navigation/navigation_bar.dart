@@ -22,7 +22,7 @@ class NavigationBar extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBar> {
   /// Constant values
-  final double _tabHeigth = 75.0;
+  final double _tabHeigth = 50.0;
 
   /// Dynamic values
   late String _title;
@@ -76,41 +76,16 @@ class _NavigationBarState extends State<NavigationBar> {
             ? const SizedBox(height: 20)
             : const SizedBox.shrink(),
         (Responsive.isTablet(context) || _showTabsOnMobile)
-            ? Container(
-                height: Responsive.isMobile(context)
-                    ? (_tabHeigth * widget.pages.length).toDouble()
-                    : _tabHeigth,
-                child: ListView.builder(
-                    scrollDirection: Responsive.isMobile(context)
-                        ? Axis.vertical
-                        : Axis.horizontal,
-                    itemCount: widget.pages.length,
-                    itemBuilder: (context, index) {
-                      String title = widget.pages[index];
-                      return NavigationBarTab(
-                        title: title,
-                        heigth: _tabHeigth,
-                        onTap: () {
-                          setState(() {
-                            this._title = getTitle(title);
-                            this._currentTabTitle = getTitle(title);
-                          });
-                          if (widget.onIndexChange != null)
-                            widget.onIndexChange!(index);
-                        },
-                        hovering: (isHovering) {
-                          setState(() => this._title = isHovering
-                              ? _currentTabTitle + " cd " + widget.pages[index]
-                              : _currentTabTitle);
-                        },
-                      );
-                    }),
+            ? Wrap(
+                direction: Axis.horizontal,
+                children: tabs(),
               )
             : const SizedBox.shrink(),
       ],
     );
   }
 
+  /// Utility function to set the correct title format
   String getTitle(String text) {
     return text + " >";
   }
@@ -118,7 +93,7 @@ class _NavigationBarState extends State<NavigationBar> {
   /// The box that containe the current nav page
   Widget titleBox() {
     return Container(
-      height: 50,
+      height: _tabHeigth,
       color: Palette.mainColor,
       child: Align(
         alignment: Alignment.centerLeft,
@@ -134,6 +109,32 @@ class _NavigationBarState extends State<NavigationBar> {
           ),
         ),
       ),
+    );
+  }
+
+  /// The available tabs under the title
+  List<Widget> tabs() {
+    return List.generate(
+      widget.pages.length,
+      (index) {
+        String title = widget.pages[index];
+        return NavigationBarTab(
+          title: title,
+          heigth: _tabHeigth,
+          onTap: () {
+            setState(() {
+              this._title = getTitle(title);
+              this._currentTabTitle = getTitle(title);
+            });
+            if (widget.onIndexChange != null) widget.onIndexChange!(index);
+          },
+          hovering: (isHovering) {
+            setState(() => this._title = isHovering
+                ? _currentTabTitle + " cd " + widget.pages[index]
+                : _currentTabTitle);
+          },
+        );
+      },
     );
   }
 
