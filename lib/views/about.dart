@@ -23,6 +23,8 @@ class _AboutState extends State<About> {
         education(),
         const SizedBox(height: 20),
         languages(),
+        const SizedBox(height: 20),
+        certifications(),
       ],
     );
   }
@@ -49,11 +51,11 @@ class _AboutState extends State<About> {
         ),
         CustomText(
           text:
-              "Able to create efficient data structure and management using databases like Firebase, iCloud and Realm or SQL/NoSQL databases.",
+              "Able to create efficient algorithm and data structure and to manage databases like Firebase, iCloud and Realm or SQL/NoSQL databases.",
         ),
         CustomText(
           text:
-              "I delight in working in group because I'm convinced that a teamworking stimulates and improves long work sessions.",
+              "I truly love working in group because I'm convinced that teamworking stimulates and improves long work sessions and thanks to shared knowledge everyone can improve himself.",
         ),
       ],
     );
@@ -134,6 +136,95 @@ class _AboutState extends State<About> {
         ),
         CustomText(
           text: "English",
+          style: CustomTextStyle.p,
+          tab: 1,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.asterisk,
+              size: 10,
+              color: Palette.secondaryColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget certifications() {
+    return Column(
+      children: [
+        CustomText(
+          text: "Certifications",
+          style: CustomTextStyle.h2,
+        ),
+        CustomText(
+          text: "Apple Swift Student Challenge WWDC 2020 winner",
+          style: CustomTextStyle.p,
+          tab: 1,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.asterisk,
+              size: 10,
+              color: Palette.secondaryColor,
+            ),
+          ),
+        ),
+        CustomText(
+          text: "CISCO CCNA1 Certification",
+          style: CustomTextStyle.p,
+          tab: 1,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.asterisk,
+              size: 10,
+              color: Palette.secondaryColor,
+            ),
+          ),
+        ),
+        CustomText(
+          text: "1st prize at HACK.GOV - Ericsson Challenge",
+          style: CustomTextStyle.p,
+          tab: 1,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.asterisk,
+              size: 10,
+              color: Palette.secondaryColor,
+            ),
+          ),
+        ),
+        CustomText(
+          text: "FileMaker Pro Advanced Developer Training",
+          style: CustomTextStyle.p,
+          tab: 1,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.asterisk,
+              size: 10,
+              color: Palette.secondaryColor,
+            ),
+          ),
+        ),
+        CustomText(
+          text: "Google Digital Marketing Training course",
+          style: CustomTextStyle.p,
+          tab: 1,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.asterisk,
+              size: 10,
+              color: Palette.secondaryColor,
+            ),
+          ),
+        ),
+        CustomText(
+          text: "GDPR regulation",
           style: CustomTextStyle.p,
           tab: 1,
           leading: Padding(

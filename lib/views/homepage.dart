@@ -4,8 +4,6 @@ import 'package:portfolio/components/_components.dart';
 import 'package:portfolio/palette.dart';
 import 'package:portfolio/views/_views.dart';
 
-import 'about.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,26 +12,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  bool _showBackToTopButton = false;
+  late int _currentIndex;
+  late bool _showGoToTopButton;
   late ScrollController _scrollController;
-
-  final List<String> tabTitles = [
-    "/home/marco/about",
-    "/home/marco/projects",
-    "/home/marco/contacts",
-  ];
+  late Map<String, Widget> tabs;
 
   @override
   void initState() {
     super.initState();
 
+    // Index of the selected route
+    _currentIndex = 0;
+
+    // utility variable to manage the go to top button
+    _showGoToTopButton = false;
+
+    // homepage routes
+    tabs = {
+      "/home/marco/about": About(),
+      "/home/marco/projects": Projects(),
+      "/home/marco/contacts": Contacts(),
+    };
+
     // scroll controller to manage the go to top button
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() => (_scrollController.offset >= 400)
-            ? _showBackToTopButton = true
-            : _showBackToTopButton = false);
+            ? _showGoToTopButton = true
+            : _showGoToTopButton = false);
       });
   }
 
@@ -57,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       floatingActionButton:
-          _showBackToTopButton == false ? null : scrollToTopButton(),
+          _showGoToTopButton == false ? null : scrollToTopButton(),
       body: Center(
         child: Container(
           width: Responsive.mobileTabletTheshold,
@@ -72,13 +78,13 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   NavigationBar(
                     initialIndex: 0,
-                    pages: tabTitles,
+                    pages: tabs.keys.toList(),
                     onIndexChange: (index) {
                       setState(() => _currentIndex = index);
                     },
                   ),
                   const SizedBox(height: 40),
-                  body(_currentIndex),
+                  tabs[tabs.keys.elementAt(_currentIndex)]!,
                 ],
               ),
             ),
@@ -105,18 +111,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  Widget body(int index) {
-    switch (index) {
-      case 0:
-        return About();
-      case 1:
-        return Projects();
-      case 2:
-        return Contacts();
-      default:
-        return const SizedBox.shrink();
-    }
   }
 }
