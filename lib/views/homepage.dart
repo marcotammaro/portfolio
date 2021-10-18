@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     // Index of the selected route
-    _currentIndex = 0;
+    _currentIndex = 1;
 
     // homepage routes
     tabs = {
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   NavigationBar(
-                    initialIndex: 0,
+                    initialIndex: _currentIndex,
                     pages: tabs.keys.toList(),
                     onIndexChange: (index) {
                       setState(() => _currentIndex = index);

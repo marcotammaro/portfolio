@@ -17,13 +17,13 @@ class _AboutState extends State<About> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         biography,
-        divider,
+        CustomDivider(),
         experiences,
-        divider,
+        CustomDivider(),
         education,
-        divider,
+        CustomDivider(),
         certifications,
-        divider,
+        CustomDivider(),
         languages,
       ],
     );
@@ -192,19 +192,6 @@ class _AboutState extends State<About> {
             ),
           ),
         ),
-      ],
-    );
-  }
-
-  Widget get divider {
-    return Column(
-      children: [
-        const SizedBox(height: 40),
-        Divider(
-          color: Palette.mainColor,
-          thickness: 2,
-        ),
-        const SizedBox(height: 40),
       ],
     );
   }
