@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
-import 'package:portfolio/palette.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Projects extends StatefulWidget {
@@ -45,12 +44,7 @@ class _ProjectsState extends State<Projects> {
             text:
                 "Not all projects are listed below, you can still find them all on my github page:"),
         GestureDetector(
-          onTap: () => launch(
-            'https://github.com/marcotammaro',
-            forceSafariVC: false,
-            forceWebView: false,
-            headers: <String, String>{'my_header_key': 'my_header_value'},
-          ),
+          onTap: () => launch('https://github.com/marcotammaro'),
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: Text(
@@ -72,34 +66,9 @@ class _ProjectsState extends State<Projects> {
       name: "Portfolio - This website",
       period: "2021 - On Going",
       type: "Webpage",
-      bottomWidget: Row(
-        children: [
-          Icon(
-            FontAwesomeIcons.github,
-            color: Palette.secondaryColor,
-            size: 28,
-          ),
-          const SizedBox(width: 20),
-          GestureDetector(
-            onTap: () => launch(
-              'https://github.com/marcotammaro/portfolio',
-              forceSafariVC: false,
-              forceWebView: false,
-              headers: <String, String>{'my_header_key': 'my_header_value'},
-            ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Text(
-                "https://github.com/marcotammaro/portfolio",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(decoration: TextDecoration.underline),
-              ),
-            ),
-          ),
-        ],
-      ),
+      bottomWidget: CustomTextWithLinkAndIcon(
+          link: 'https://github.com/marcotammaro/portfolio',
+          icon: FontAwesomeIcons.github),
     );
   }
 
@@ -110,76 +79,23 @@ class _ProjectsState extends State<Projects> {
       type: "iOS and Android App",
       description:
           "UniU brings your university to your smartphone.\nEverything you need at your fingertips: consult the data relating to your university career, your average, your grades, exams taken and those missing and much more.",
-      bottomWidget: Row(
-        children: [
-          Icon(
-            FontAwesomeIcons.appStoreIos,
-            color: Palette.secondaryColor,
-            size: 28,
-          ),
-          const SizedBox(width: 10),
-          Icon(
-            FontAwesomeIcons.googlePlay,
-            color: Palette.secondaryColor,
-          ),
-          const SizedBox(width: 20),
-          GestureDetector(
-            onTap: () => launch(
-              'https://bit.ly/3ooIvfG',
-              forceSafariVC: false,
-              forceWebView: false,
-              headers: <String, String>{'my_header_key': 'my_header_value'},
-            ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Text(
-                "https://bit.ly/3ooIvfG",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(decoration: TextDecoration.underline),
-              ),
-            ),
-          ),
-        ],
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link: 'https://bit.ly/3ooIvfG',
+        icon: FontAwesomeIcons.appStoreIos,
       ),
     );
   }
 
   Widget get wwdcProject {
     return ProjectCard(
-      name: "WWDC 2020",
+      name: "What’s in my PC",
       period: "2020",
       type: "Swift Playground",
       description:
-          "A PlaygroundBook to get people interested in the world of computer components not by disassembling perfectly working PCs (maybe this is not the best idea), instead by using a Playground Book to let them interact with a simplified version of a computer.",
-      bottomWidget: Row(
-        children: [
-          Icon(
-            FontAwesomeIcons.github,
-            color: Palette.secondaryColor,
-            size: 28,
-          ),
-          const SizedBox(width: 20),
-          GestureDetector(
-            onTap: () => launch(
-              'https://github.com/marcotammaro/WWDC20-Winner',
-              forceSafariVC: false,
-              forceWebView: false,
-              headers: <String, String>{'my_header_key': 'my_header_value'},
-            ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Text(
-                "https://github.com/marcotammaro/WWDC20-Winner",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(decoration: TextDecoration.underline),
-              ),
-            ),
-          ),
-        ],
+          "Winner of WWDC2020 this is a PlaygroundBook used to get people interested in the world of computer components not by disassembling perfectly working PCs (maybe this is not the best idea), instead by using a PlaygroundBook to let them interact with a simplified version of a computer.",
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link: 'https://github.com/marcotammaro/WWDC20-Winner',
+        icon: FontAwesomeIcons.github,
       ),
     );
   }
@@ -191,33 +107,9 @@ class _ProjectsState extends State<Projects> {
       type: "iOS App",
       description:
           "PerkApp focuses on motivating you by encouraging you to keep track of your progress at work and by sending you personalised notifications to remind you of your achievements.",
-      bottomWidget: Row(
-        children: [
-          Icon(
-            FontAwesomeIcons.appStoreIos,
-            color: Palette.secondaryColor,
-            size: 28,
-          ),
-          const SizedBox(width: 20),
-          GestureDetector(
-            onTap: () => launch(
-              'https://apple.co/3nbERnk',
-              forceSafariVC: false,
-              forceWebView: false,
-              headers: <String, String>{'my_header_key': 'my_header_value'},
-            ),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Text(
-                "https://apple.co/3nbERnk",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(decoration: TextDecoration.underline),
-              ),
-            ),
-          ),
-        ],
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link: 'https://apple.co/3nbERnk',
+        icon: FontAwesomeIcons.appStoreIos,
       ),
     );
   }

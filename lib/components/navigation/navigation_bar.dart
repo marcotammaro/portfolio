@@ -123,6 +123,7 @@ class _NavigationBarState extends State<NavigationBar> {
           heigth: _tabHeigth,
           onTap: () {
             setState(() {
+              this._showTabsOnMobile = false;
               this._title = getTitle(title);
               this._currentTabTitle = getTitle(title);
             });

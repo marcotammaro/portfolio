@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     // Index of the selected route
-    _currentIndex = 1;
+    _currentIndex = 0;
 
     // homepage routes
     tabs = {
@@ -32,7 +32,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: Center(
+      body: Align(
+        alignment: Alignment.topCenter,
         child: Container(
           width: Responsive.mobileTabletTheshold,
           padding: const EdgeInsets.all(20.0),
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   NavigationBar(
                     initialIndex: _currentIndex,
