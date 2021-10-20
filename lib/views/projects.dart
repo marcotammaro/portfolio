@@ -67,8 +67,9 @@ class _ProjectsState extends State<Projects> {
       period: "2021 - On Going",
       type: "Webpage",
       bottomWidget: CustomTextWithLinkAndIcon(
-          link: 'https://github.com/marcotammaro/portfolio',
-          icon: FontAwesomeIcons.github),
+        link: 'https://github.com/marcotammaro/portfolio',
+        icons: [FontAwesomeIcons.github],
+      ),
     );
   }
 
@@ -81,7 +82,7 @@ class _ProjectsState extends State<Projects> {
           "UniU brings your university to your smartphone.\nEverything you need at your fingertips: consult the data relating to your university career, your average, your grades, exams taken and those missing and much more.",
       bottomWidget: CustomTextWithLinkAndIcon(
         link: 'https://bit.ly/3ooIvfG',
-        icon: FontAwesomeIcons.appStoreIos,
+        icons: [FontAwesomeIcons.appStoreIos, FontAwesomeIcons.googlePlay],
       ),
     );
   }
@@ -95,7 +96,7 @@ class _ProjectsState extends State<Projects> {
           "Winner of WWDC2020 this is a PlaygroundBook used to get people interested in the world of computer components not by disassembling perfectly working PCs (maybe this is not the best idea), instead by using a PlaygroundBook to let them interact with a simplified version of a computer.",
       bottomWidget: CustomTextWithLinkAndIcon(
         link: 'https://github.com/marcotammaro/WWDC20-Winner',
-        icon: FontAwesomeIcons.github,
+        icons: [FontAwesomeIcons.github],
       ),
     );
   }
@@ -109,7 +110,7 @@ class _ProjectsState extends State<Projects> {
           "PerkApp focuses on motivating you by encouraging you to keep track of your progress at work and by sending you personalised notifications to remind you of your achievements.",
       bottomWidget: CustomTextWithLinkAndIcon(
         link: 'https://apple.co/3nbERnk',
-        icon: FontAwesomeIcons.appStoreIos,
+        icons: [FontAwesomeIcons.appStoreIos],
       ),
     );
   }

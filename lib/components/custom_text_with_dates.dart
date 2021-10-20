@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/palette.dart';
 
-class CustomTextWithDates extends StatefulWidget {
+class CustomTextWithDates extends StatelessWidget {
   const CustomTextWithDates({
     Key? key,
     required this.title,
@@ -16,11 +16,6 @@ class CustomTextWithDates extends StatefulWidget {
   final bool noBottomPadding;
 
   @override
-  _CustomTextWithDatesState createState() => _CustomTextWithDatesState();
-}
-
-class _CustomTextWithDatesState extends State<CustomTextWithDates> {
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
@@ -29,7 +24,7 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
         children: [
           Expanded(
             child: Text(
-              '[${widget.period}]',
+              '[$period]',
               style: Theme.of(context)
                   .textTheme
                   .bodyText1!
@@ -43,17 +38,17 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
+                  title,
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 const SizedBox(height: 10),
-                widget.text != null
+                text != null
                     ? Text(
-                        widget.text!,
+                        text!,
                         style: Theme.of(context).textTheme.bodyText1,
                       )
                     : const SizedBox.shrink(),
-                SizedBox(height: widget.noBottomPadding ? 0 : 20),
+                SizedBox(height: noBottomPadding ? 0 : 20),
               ],
             ),
           ),

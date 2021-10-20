@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
+import 'package:http/http.dart' as http;
 import 'package:portfolio/palette.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({Key? key}) : super(key: key);
@@ -12,6 +14,17 @@ class Contacts extends StatefulWidget {
 }
 
 class _ContactsState extends State<Contacts> {
+  DateTime? _lastMessageTimestamp;
+  late String _formSendText;
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _formSendText = "Send";
+    _controller = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,13 +36,9 @@ class _ContactsState extends State<Contacts> {
         ),
         email,
         CustomDivider(),
-        CustomText(
-          text: "Others",
-          style: CustomTextStyle.h2,
-        ),
-        github,
-        const SizedBox(height: 10),
-        linkedin,
+        others,
+        CustomDivider(),
+        contactForm
       ],
     );
   }
@@ -41,23 +50,107 @@ class _ContactsState extends State<Contacts> {
         CustomTextWithLinkAndIcon(
           link: 'mailto:marcotammaro42@gmail.com',
           text: 'marcotammaro42@gmail.com',
-          icon: FontAwesomeIcons.at,
+          icons: [FontAwesomeIcons.at],
         ),
       ],
     );
   }
 
-  Widget get github {
-    return CustomTextWithLinkAndIcon(
-      link: 'https://github.com/marcotammaro/',
-      icon: FontAwesomeIcons.github,
+  Widget get others {
+    return Column(
+      children: [
+        CustomText(
+          text: "Others",
+          style: CustomTextStyle.h2,
+        ),
+        CustomTextWithLinkAndIcon(
+          link: 'https://github.com/marcotammaro/',
+          icons: [FontAwesomeIcons.github],
+        ),
+        const SizedBox(height: 10),
+        CustomTextWithLinkAndIcon(
+          link: 'https://www.linkedin.com/in/marcotammaro/',
+          icons: [FontAwesomeIcons.linkedin],
+        )
+      ],
     );
   }
 
-  Widget get linkedin {
-    return CustomTextWithLinkAndIcon(
-      link: 'https://www.linkedin.com/in/marcotammaro/',
-      icon: FontAwesomeIcons.linkedin,
+  Widget get contactForm {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomText(
+          text: "Contact Form",
+          style: CustomTextStyle.h2,
+        ),
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.end,
+          alignment: WrapAlignment.end,
+          children: [
+            Container(
+              width: Responsive.mobileTabletTheshold * 0.5,
+              constraints: BoxConstraints(minHeight: 150),
+              padding: EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                color: Palette.secondaryColor,
+              ),
+              child: Container(
+                padding: EdgeInsets.all(13),
+                decoration: BoxDecoration(color: Palette.backgroundColor),
+                child: TextFormField(
+                  controller: _controller,
+                  textCapitalization: TextCapitalization.sentences,
+                  readOnly: false,
+                  maxLines: null,
+                  cursorColor: Palette.mainColor,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: Palette.mainColor),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.zero,
+                    isDense: true,
+                    border: InputBorder.none,
+                    prefixIcon: Icon(
+                      FontAwesomeIcons.chevronRight,
+                      color: Palette.mainColor,
+                      size: 15,
+                    ),
+                    prefixIconConstraints: BoxConstraints(
+                      minWidth: 0,
+                      minHeight: 0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, top: 20),
+              child: FormSendButton(
+                onVerifiedPress: () => postData(text: _controller.text),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
+  }
+
+  Future postData({
+    required String text,
+  }) async {
+    if (text == "") return;
+
+    _controller.clear();
+    Uri uri =
+        Uri.parse('https://portfolioform.herokuapp.com/messages?message=$text');
+    try {
+      http.Response res = await http.post(uri);
+      print(res.body);
+    } catch (err) {
+      print(err);
+    }
   }
 }
