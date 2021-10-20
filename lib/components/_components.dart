@@ -1,10 +1,9 @@
-export "navigation/navigation_bar.dart";
-export "navigation/navigation_bar_tab.dart";
-
+export 'navigation_bar.dart';
+export 'bordered_button.dart';
 export "responsive.dart";
 export "custom_text.dart";
 export "custom_text_with_dates.dart";
 export "project_card.dart";
 export "custom_divider.dart";
 export "custom_text_with_link_and_icon.dart";
-export 'form_send_button.dart';
+export "form_send_button.dart";

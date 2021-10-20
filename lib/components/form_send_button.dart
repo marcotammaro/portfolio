@@ -24,7 +24,7 @@ class _FormSendButtonState extends State<FormSendButton> {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBarTab(
+    return BorderedButton(
       title: "Send",
       heigth: 50,
       removeMargins: true,
@@ -67,7 +67,7 @@ class _FormSendButtonState extends State<FormSendButton> {
             ),
           ),
           actions: <Widget>[
-            NavigationBarTab(
+            BorderedButton(
               title: 'OK, sorry',
               heigth: 50,
               onTap: () {

@@ -118,7 +118,7 @@ class _NavigationBarState extends State<NavigationBar> {
       widget.pages.length,
       (index) {
         String title = widget.pages[index];
-        return NavigationBarTab(
+        return BorderedButton(
           title: title,
           heigth: _tabHeigth,
           onTap: () {

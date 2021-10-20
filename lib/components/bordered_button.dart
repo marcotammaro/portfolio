@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/palette.dart';
 
-class NavigationBarTab extends StatefulWidget {
-  const NavigationBarTab({
+class BorderedButton extends StatefulWidget {
+  const BorderedButton({
     Key? key,
     required this.title,
     this.onTap,
@@ -18,10 +18,10 @@ class NavigationBarTab extends StatefulWidget {
   final bool removeMargins;
 
   @override
-  _NavigationBarTabState createState() => _NavigationBarTabState();
+  _BorderedButtonState createState() => _BorderedButtonState();
 }
 
-class _NavigationBarTabState extends State<NavigationBarTab> {
+class _BorderedButtonState extends State<BorderedButton> {
   static const double _borderWidth = 2;
   bool _isHovering = false;
 
