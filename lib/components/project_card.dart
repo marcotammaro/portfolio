@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/responsive.dart';
 import 'package:portfolio/palette.dart';
 
 class ProjectCard extends StatefulWidget {
@@ -26,59 +27,101 @@ class ProjectCard extends StatefulWidget {
 class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '[${widget.period}]',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(color: Palette.mainColor),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  widget.type,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(color: Palette.mainColor),
-                ),
-              ],
-            ),
+    return Responsive.isMobile(context) ? mobileContent : tabletContent;
+  }
+
+  Widget get tabletContent {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              period,
+              const SizedBox(height: 10),
+              type,
+            ],
           ),
-          const SizedBox(width: 20),
-          Expanded(
-            flex: 3,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.name,
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-                SizedBox(height: widget.description != null ? 10 : 0),
-                widget.description != null
-                    ? Text(
-                        widget.description!,
-                        style: Theme.of(context).textTheme.bodyText1,
-                      )
-                    : const SizedBox.shrink(),
-                const SizedBox(height: 10),
-                widget.bottomWidget != null
-                    ? widget.bottomWidget!
-                    : const SizedBox.shrink(),
-                SizedBox(height: widget.noBottomPadding ? 0 : 20),
-              ],
-            ),
+        ),
+        const SizedBox(width: 20),
+        Expanded(
+          flex: 3,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              name,
+              SizedBox(height: widget.description != null ? 10 : 0),
+              const SizedBox(height: 10),
+              bottomWidget,
+              SizedBox(height: widget.noBottomPadding ? 0 : 20),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
+  }
+
+  Widget get mobileContent {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            period,
+            const SizedBox(width: 10),
+            type,
+          ],
+        ),
+        const SizedBox(height: 20),
+        name,
+        SizedBox(height: widget.description != null ? 10 : 0),
+        const SizedBox(height: 10),
+        bottomWidget,
+        SizedBox(height: widget.noBottomPadding ? 0 : 20),
+      ],
+    );
+  }
+
+  Widget get period {
+    return Text(
+      '[${widget.period}]',
+      style: Theme.of(context)
+          .textTheme
+          .bodyText1!
+          .copyWith(color: Palette.mainColor),
+    );
+  }
+
+  Widget get type {
+    return Text(
+      widget.type,
+      style: Theme.of(context)
+          .textTheme
+          .bodyText1!
+          .copyWith(color: Palette.mainColor),
+    );
+  }
+
+  Widget get name {
+    return Text(
+      widget.name,
+      style: Theme.of(context).textTheme.headline2,
+    );
+  }
+
+  Widget get description {
+    return widget.description != null
+        ? Text(
+            widget.description!,
+            style: Theme.of(context).textTheme.bodyText1,
+          )
+        : const SizedBox.shrink();
+  }
+
+  Widget get bottomWidget {
+    return widget.bottomWidget != null
+        ? widget.bottomWidget!
+        : const SizedBox.shrink();
   }
 }

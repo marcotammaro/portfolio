@@ -23,21 +23,28 @@ class CustomTextWithLinkAndIcon extends StatelessWidget {
             ))
         .toList();
 
-    return Container(
+    return SizedBox(
       child: Row(
         children: iconsWidget +
             [
               const SizedBox(width: 10),
-              GestureDetector(
-                onTap: () => launch(link),
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    text ?? link,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(decoration: TextDecoration.underline),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => launch(link),
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Expanded(
+                      child: Text(
+                        text ?? link,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
+                        maxLines: 2,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(decoration: TextDecoration.underline),
+                      ),
+                    ),
                   ),
                 ),
               ),

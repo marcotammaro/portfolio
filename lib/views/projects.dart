@@ -70,6 +70,18 @@ class _ProjectsState extends State<Projects> {
         link: 'https://github.com/marcotammaro/portfolio',
         icons: [FontAwesomeIcons.github],
       ),
+      // bottomWidget: Row(
+      //   children: [
+      //     Expanded(
+      //       child: Text(
+      //         'https://github.com/marcotammaro/portfoliohttps://github.com/marcotammaro/portfolio',
+      //         overflow: TextOverflow.ellipsis,
+      //         softWrap: false,
+      //         maxLines: 2,
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 
