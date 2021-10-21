@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
@@ -14,15 +14,18 @@ class Contacts extends StatefulWidget {
 }
 
 class _ContactsState extends State<Contacts> {
-  DateTime? _lastMessageTimestamp;
-  late String _formSendText;
   late TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
-    _formSendText = "Send";
-    _controller = TextEditingController();
+    _controller = TextEditingController(text: "> ");
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -100,6 +103,19 @@ class _ContactsState extends State<Contacts> {
                 decoration: BoxDecoration(color: Palette.backgroundColor),
                 child: TextFormField(
                   controller: _controller,
+                  onChanged: (value) {
+                    if (value.length == 0 || !value.startsWith("> ")) {
+                      if (value.startsWith(">")) {
+                        _controller.text = value.replaceFirst(">", "> ");
+                      } else {
+                        _controller.text = "> " + value;
+                      }
+
+                      _controller.selection = TextSelection.fromPosition(
+                        TextPosition(offset: _controller.text.length),
+                      );
+                    }
+                  },
                   textCapitalization: TextCapitalization.sentences,
                   readOnly: false,
                   maxLines: null,
@@ -113,11 +129,6 @@ class _ContactsState extends State<Contacts> {
                     contentPadding: EdgeInsets.zero,
                     isDense: true,
                     border: InputBorder.none,
-                    prefixIcon: Icon(
-                      FontAwesomeIcons.chevronRight,
-                      color: Palette.mainColor,
-                      size: 15,
-                    ),
                     prefixIconConstraints: BoxConstraints(
                       minWidth: 0,
                       minHeight: 0,
@@ -129,7 +140,8 @@ class _ContactsState extends State<Contacts> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 20),
               child: FormSendButton(
-                onVerifiedPress: () => postData(text: _controller.text),
+                onVerifiedPress: () =>
+                    postData(text: _controller.text.replaceFirst('> ', '')),
               ),
             ),
           ],
@@ -143,11 +155,15 @@ class _ContactsState extends State<Contacts> {
   }) async {
     if (text == "") return;
 
-    _controller.clear();
-    Uri uri =
-        Uri.parse('https://portfolioform.herokuapp.com/messages?message=$text');
+    _controller.text = "> ";
+    var uriString = 'https://portfolioform.herokuapp.com//messages';
+    var uri = Uri.parse(uriString);
+
+    var map = Map<String, dynamic>();
+    map['text'] = Uri.encodeComponent(text);
+
     try {
-      http.Response res = await http.post(uri);
+      http.Response res = await http.post(uri, body: map);
       print(res.body);
     } catch (err) {
       print(err);

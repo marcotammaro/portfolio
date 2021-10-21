@@ -29,7 +29,7 @@ class _FormSendButtonState extends State<FormSendButton> {
       heigth: 50,
       removeMargins: true,
       onTap: () {
-        if (isRedundentClick) return;
+        // if (isRedundentClick) return;
         widget.onVerifiedPress();
       },
     );
