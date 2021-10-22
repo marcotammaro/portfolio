@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.topCenter,
         child: Container(
           width: Responsive.mobileTabletTheshold,
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ScrollConfiguration(
             behavior:
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),

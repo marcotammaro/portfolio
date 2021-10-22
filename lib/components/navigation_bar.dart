@@ -63,6 +63,7 @@ class _NavigationBarState extends State<NavigationBar> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -75,12 +76,17 @@ class _NavigationBarState extends State<NavigationBar> {
         (Responsive.isTablet(context) || _showTabsOnMobile)
             ? const SizedBox(height: 20)
             : const SizedBox.shrink(),
-        (Responsive.isTablet(context) || _showTabsOnMobile)
+        Responsive.isTablet(context)
             ? Wrap(
                 direction: Axis.horizontal,
                 children: tabs,
               )
-            : const SizedBox.shrink(),
+            : _showTabsOnMobile
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: tabs + [const SizedBox(width: double.infinity)],
+                  )
+                : const SizedBox.shrink(),
       ],
     );
   }
