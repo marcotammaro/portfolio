@@ -18,6 +18,8 @@ jobs:
       - run: |
           cp assets/images/favicon.png build/web/favicon.png
           cd build/web
+          touch CNAME
+          echo "marcotammaro.it" > CNAME
           git init
           git config --global user.email marcotammaro42@gmail.com
           git config --global user.name marcotammaro
@@ -26,4 +28,4 @@ jobs:
           git checkout -b main
           git add --all
           git commit -m "update from github actions"
-          git push origin main
+          git push origin main -f
