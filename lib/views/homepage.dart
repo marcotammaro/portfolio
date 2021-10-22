@@ -56,6 +56,7 @@ class _HomePageState extends State<HomePage> {
                   tabs[tabs.keys.elementAt(_currentIndex)]!,
                   const SizedBox(height: 40),
                   copyright,
+                  const SizedBox(height: 40),
                 ],
               ),
             ),
