@@ -26,4 +26,4 @@ jobs:
           git checkout -b main
           git add --all
           git commit -m "update from github actions"
-          git push origin main -f
+          git push origin main
