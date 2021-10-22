@@ -16,6 +16,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
       - run: |
+          cp assets/images/favicon.png build/web/favicon.png
           cd build/web
           git init
           git config --global user.email marcotammaro42@gmail.com
@@ -26,4 +27,3 @@ jobs:
           git add --all
           git commit -m "update from github actions"
           git push origin main -f
-          
