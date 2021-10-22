@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
@@ -86,6 +85,11 @@ class _ContactsState extends State<Contacts> {
         CustomText(
           text: "Contact Form",
           style: CustomTextStyle.h2,
+        ),
+        CustomText(
+          text:
+              "Do you want to send me a speedy message?\nWrite it in this form; remember to add your contact info if you want a reply.",
+          style: CustomTextStyle.p,
         ),
         Wrap(
           crossAxisAlignment: WrapCrossAlignment.end,
