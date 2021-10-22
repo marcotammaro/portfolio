@@ -21,7 +21,7 @@ jobs:
           git config --global user.email marcotammaro42@gmail.com
           git config --global user.name marcotammaro
           git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/marcotammaro/test_portfolio.git
+          git remote add origin https://${{secrets.commit_secret}}@github.com/marcotammaro/marcotammaro.github.io.git
           git checkout -b main
           git add --all
           git commit -m "update from github actions"
