@@ -140,8 +140,9 @@ class _ContactsState extends State<Contacts> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 20),
               child: FormSendButton(
-                onVerifiedPress: () =>
+                onVerifiedTap: () =>
                     postData(text: _controller.text.replaceFirst('> ', '')),
+                onTap: () => FocusScope.of(context).unfocus(),
               ),
             ),
           ],

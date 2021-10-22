@@ -5,10 +5,11 @@ import 'package:portfolio/components/_components.dart';
 import 'package:portfolio/palette.dart';
 
 class FormSendButton extends StatefulWidget {
-  const FormSendButton({Key? key, required this.onVerifiedPress})
+  const FormSendButton({Key? key, required this.onVerifiedTap, this.onTap})
       : super(key: key);
 
-  final VoidCallback onVerifiedPress;
+  final VoidCallback onVerifiedTap;
+  final VoidCallback? onTap;
 
   @override
   _FormSendButtonState createState() => _FormSendButtonState();
@@ -29,8 +30,9 @@ class _FormSendButtonState extends State<FormSendButton> {
       heigth: 50,
       removeMargins: true,
       onTap: () {
-        // if (isRedundentClick) return;
-        widget.onVerifiedPress();
+        if (widget.onTap != null) widget.onTap!();
+        if (isRedundentClick) return;
+        widget.onVerifiedTap();
       },
     );
   }

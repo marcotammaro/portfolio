@@ -33,17 +33,15 @@ class CustomTextWithLinkAndIcon extends StatelessWidget {
                   onTap: () => launch(link),
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
-                    child: Expanded(
-                      child: Text(
-                        text ?? link,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: false,
-                        maxLines: 2,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(decoration: TextDecoration.underline),
-                      ),
+                    child: Text(
+                      text ?? link,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                      maxLines: 2,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(decoration: TextDecoration.underline),
                     ),
                   ),
                 ),
