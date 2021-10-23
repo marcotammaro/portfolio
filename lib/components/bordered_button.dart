@@ -36,21 +36,17 @@ class _BorderedButtonState extends State<BorderedButton> {
           SizedBox(
             height: widget.heigth,
             child: MouseRegion(
-              onEnter: (event) {
-                if (widget.hovering != null) widget.hovering!(true);
-                setState(() {
-                  _isHovering = true;
-                });
-              },
-              onExit: (event) {
-                if (widget.hovering != null) widget.hovering!(false);
-                setState(() {
-                  _isHovering = false;
-                });
-              },
+              onEnter: (_) => hovering(true),
+              onExit: (_) => hovering(false),
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: widget.onTap,
+                onTapDown: (_) => hovering(true),
+                onTapUp: (_) => Future.delayed(
+                  Duration(milliseconds: 100),
+                  () => hovering(false),
+                ),
+                onTapCancel: () => hovering(false),
                 child: Container(
                   padding: const EdgeInsets.all(_borderWidth),
                   color: Palette.secondaryColor,
@@ -77,5 +73,10 @@ class _BorderedButtonState extends State<BorderedButton> {
         ],
       ),
     );
+  }
+
+  void hovering(bool status) {
+    if (widget.hovering != null) widget.hovering!(status);
+    setState(() => _isHovering = status);
   }
 }

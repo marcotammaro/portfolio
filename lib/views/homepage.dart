@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:portfolio/components/_components.dart';
 import 'package:portfolio/views/_views.dart';
 
@@ -30,34 +31,37 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: Container(
-          width: Responsive.mobileTabletTheshold,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: ScrollConfiguration(
-            behavior:
-                ScrollConfiguration.of(context).copyWith(scrollbars: false),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  NavigationBar(
-                    initialIndex: _currentIndex,
-                    pages: tabs.keys.toList(),
-                    onIndexChange: (index) {
-                      setState(() => _currentIndex = index);
-                    },
-                  ),
-                  const SizedBox(height: 40),
-                  tabs[tabs.keys.elementAt(_currentIndex)]!,
-                  const SizedBox(height: 40),
-                  copyright,
-                  const SizedBox(height: 40),
-                ],
+      body: SafeArea(
+        bottom: false,
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: Responsive.mobileTabletTheshold,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    NavigationBar(
+                      initialIndex: _currentIndex,
+                      pages: tabs.keys.toList(),
+                      onIndexChange: (index) {
+                        setState(() => _currentIndex = index);
+                      },
+                    ),
+                    const SizedBox(height: 40),
+                    tabs[tabs.keys.elementAt(_currentIndex)]!,
+                    const SizedBox(height: 40),
+                    copyright,
+                    const SizedBox(height: 40),
+                  ],
+                ),
               ),
             ),
           ),
