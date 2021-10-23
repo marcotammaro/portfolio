@@ -161,7 +161,7 @@ class _ContactsState extends State<Contacts> {
     if (text == "") return;
 
     _controller.text = "> ";
-    var uriString = 'https://portfolioform.herokuapp.com//messages';
+    var uriString = 'https://portfolioform.herokuapp.com/messages';
     var uri = Uri.parse(uriString);
 
     var map = Map<String, dynamic>();
