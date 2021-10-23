@@ -34,7 +34,7 @@ class _CustomTextState extends State<CustomText> {
           SizedBox(width: widget.tab * 20),
           widget.leading ?? const SizedBox.shrink(),
           Expanded(
-            child: Text(
+            child: SelectableText(
               widget.text,
               style: widget.color != null
                   ? toStyle(widget.style ?? CustomTextStyle.p)

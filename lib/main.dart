@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'FiraCode',
         backgroundColor: Palette.backgroundColor,
         primaryColor: Palette.mainColor,
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: Palette.secondaryColor.withAlpha(80),
+        ),
         textTheme: TextTheme(
           headline1: TextStyle(
             color: Palette.secondaryColor,

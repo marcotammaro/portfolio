@@ -84,7 +84,7 @@ class _ProjectCardState extends State<ProjectCard> {
   }
 
   Widget get period {
-    return Text(
+    return SelectableText(
       '[${widget.period}]',
       style: Theme.of(context)
           .textTheme
@@ -94,7 +94,7 @@ class _ProjectCardState extends State<ProjectCard> {
   }
 
   Widget get type {
-    return Text(
+    return SelectableText(
       widget.type,
       style: Theme.of(context)
           .textTheme
@@ -104,7 +104,7 @@ class _ProjectCardState extends State<ProjectCard> {
   }
 
   Widget get name {
-    return Text(
+    return SelectableText(
       widget.name,
       style: Theme.of(context).textTheme.headline2,
     );
@@ -112,7 +112,7 @@ class _ProjectCardState extends State<ProjectCard> {
 
   Widget get description {
     return widget.description != null
-        ? Text(
+        ? SelectableText(
             widget.description!,
             style: Theme.of(context).textTheme.bodyText1,
           )

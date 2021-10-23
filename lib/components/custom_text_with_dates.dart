@@ -68,7 +68,7 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
   }
 
   Widget get period {
-    return Text(
+    return SelectableText(
       '[${widget.period}]',
       style: Theme.of(context)
           .textTheme
@@ -78,7 +78,7 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
   }
 
   Widget get title {
-    return Text(
+    return SelectableText(
       widget.title,
       style: Theme.of(context).textTheme.headline3,
     );
@@ -86,7 +86,7 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
 
   Widget get text {
     return widget.text != null
-        ? Text(
+        ? SelectableText(
             widget.text!,
             style: Theme.of(context).textTheme.bodyText1,
           )
