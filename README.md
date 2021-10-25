@@ -1,4 +1,4 @@
-# ![](/assets/images/favicon.png) My Portfolio
+# <img src="/assets/images/favicon.png" width="64"> My Portfolio
 
 A website created using the amazing flexibility of Flutter Framework.
 
