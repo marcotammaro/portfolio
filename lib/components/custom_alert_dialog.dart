@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../palette.dart';
 import '_components.dart';
 
+/// An alert dialog to show a message to the user
 class CustomAlertDialog {
   static Future show({
     required BuildContext context,
