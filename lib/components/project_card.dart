@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/responsive.dart';
 import 'package:portfolio/palette.dart';
 
+/// A Widget to display projects information with the provided information and
+/// a bottom padding of 20 removable by setting ```noBottomPadding=true```
+///
+/// The ```period``` text will be rounded with square brackets.
 class ProjectCard extends StatefulWidget {
   const ProjectCard({
     Key? key,

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/responsive.dart';
 import 'package:portfolio/palette.dart';
 
+/// A Widget to display a ```title``` with a leading date provided by ```period```
+/// and a bottom description provided by ```text```
+///
+/// The ```period``` text will be rounded with square brackets.
 class CustomTextWithDates extends StatefulWidget {
   const CustomTextWithDates({
     Key? key,
@@ -24,8 +28,9 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(bottom: 20.0),
-        child: Responsive.isMobile(context) ? mobileContent : tabletContent);
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Responsive.isMobile(context) ? mobileContent : tabletContent,
+    );
   }
 
   Widget get tabletContent {

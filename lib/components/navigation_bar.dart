@@ -4,17 +4,20 @@ import 'package:portfolio/components/_components.dart';
 import 'package:portfolio/palette.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+/// A custom NavigationBar to manage the pages navigation;
+/// once initialized it will display the ```initialIndex``` page that should be within 0 and ```pages.length-1```
+/// where ```pages``` is an array with the titles of the NavigationBar Boxes.
 class NavigationBar extends StatefulWidget {
   const NavigationBar({
     Key? key,
     required this.initialIndex,
-    this.onIndexChange,
     required this.pages,
+    this.onIndexChange,
   }) : super(key: key);
 
   final Function(int)? onIndexChange;
-  final int initialIndex;
   final List<String> pages;
+  final int initialIndex;
 
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -34,6 +37,10 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   void initState() {
     super.initState();
+
+    if (widget.initialIndex < 0 || widget.initialIndex >= widget.pages.length) {
+      throw Exception('NavigationBar initialIndex not in pages range');
+    }
 
     // Initializing values
     this._title = getTitle(widget.pages[widget.initialIndex]);

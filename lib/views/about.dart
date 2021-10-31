@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
-import 'package:portfolio/palette.dart';
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -168,29 +166,13 @@ class _AboutState extends State<About> {
         CustomText(
           text: "Italian (native)",
           style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
+          asterisk: true,
         ),
         CustomText(
           noBottomPadding: true,
           text: "English",
           style: CustomTextStyle.p,
-          tab: 1,
-          leading: Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              FontAwesomeIcons.asterisk,
-              size: 10,
-              color: Palette.secondaryColor,
-            ),
-          ),
+          asterisk: true,
         ),
       ],
     );

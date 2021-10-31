@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/palette.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// A widget with a clickable ```text``` that opens a provided ```link``` and a leading list of icons
 class CustomTextWithLinkAndIcon extends StatelessWidget {
   const CustomTextWithLinkAndIcon({
     Key? key,

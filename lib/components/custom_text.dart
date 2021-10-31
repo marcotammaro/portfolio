@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/palette.dart';
 
 enum CustomTextStyle { h1, h2, h3, p }
 
+/// A widget to create h1, h2, h3 and p texts with additional bottomPadding
+/// of 20 removable by setting ```noBottomPadding=true```
+///
+/// Is also possible to add a leading asterisk by setting ```asterisk=true```
 class CustomText extends StatefulWidget {
   const CustomText({
     Key? key,
     required this.text,
     this.style,
     this.color,
-    this.leading,
-    this.tab = 0,
+    this.asterisk = false,
     this.noBottomPadding = false,
   }) : super(key: key);
 
   final String text;
   final CustomTextStyle? style;
   final Color? color;
-  final Widget? leading;
-  final int tab;
+  final bool asterisk;
   final bool noBottomPadding;
 
   @override
@@ -31,8 +35,7 @@ class _CustomTextState extends State<CustomText> {
       padding: EdgeInsets.only(bottom: widget.noBottomPadding ? 0 : 20.0),
       child: Row(
         children: [
-          SizedBox(width: widget.tab * 20),
-          widget.leading ?? const SizedBox.shrink(),
+          asterisk,
           Expanded(
             child: SelectableText(
               widget.text,
@@ -47,6 +50,7 @@ class _CustomTextState extends State<CustomText> {
     );
   }
 
+  /// Function to convert CustomTextStyle to TextStyle
   TextStyle? toStyle(CustomTextStyle style) {
     switch (style) {
       case CustomTextStyle.h1:
@@ -59,4 +63,15 @@ class _CustomTextState extends State<CustomText> {
         return Theme.of(context).textTheme.bodyText1;
     }
   }
+
+  Widget get asterisk => widget.asterisk
+      ? Padding(
+          padding: const EdgeInsets.only(right: 10.0, left: 20.0),
+          child: Icon(
+            FontAwesomeIcons.asterisk,
+            size: 10,
+            color: Palette.secondaryColor,
+          ),
+        )
+      : const SizedBox.shrink();
 }

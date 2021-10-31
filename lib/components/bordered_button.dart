@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/palette.dart';
 
+/// A custom Button with a text and a border line that animate itself by inverting colors when hovering on
+/// it returning also a ```true``` value by ```hovering``` callback when a cursor is hovering the Widget or ```false``` otherwise..
+///
+/// It implements a bottom and top margin of 10 removable with ```removeMargins=true```.
 class BorderedButton extends StatefulWidget {
   const BorderedButton({
     Key? key,
     required this.title,
+    required this.heigth,
     this.onTap,
     this.hovering,
-    required this.heigth,
     this.removeMargins = false,
   }) : super(key: key);
 
   final String title;
+  final double heigth;
   final VoidCallback? onTap;
   final Function(bool)? hovering;
-  final double heigth;
   final bool removeMargins;
 
   @override
