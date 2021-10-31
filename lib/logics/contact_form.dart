@@ -16,11 +16,8 @@ class ContactForm {
     var body = Map<String, dynamic>();
     body['text'] = Uri.encodeComponent(text);
 
-    var header = Map<String, String>();
-    header['Access-Control-Allow-Origin'] = "*";
-
     try {
-      http.Response res = await http.post(uri, body: body, headers: header);
+      http.Response res = await http.post(uri, body: body);
       if (res.body == "OK") return null;
     } catch (err) {
       return "Error";
