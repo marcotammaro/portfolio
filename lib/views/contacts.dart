@@ -1,8 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
-import 'package:http/http.dart' as http;
+import 'package:portfolio/logics/_logics.dart';
 import 'package:portfolio/palette.dart';
 
 class Contacts extends StatefulWidget {
@@ -144,8 +143,7 @@ class _ContactsState extends State<Contacts> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 20),
               child: FormSendButton(
-                onVerifiedTap: () =>
-                    postData(text: _controller.text.replaceFirst('> ', '')),
+                onVerifiedTap: _onContactFormSendTap,
                 onTap: () => FocusScope.of(context).unfocus(),
               ),
             ),
@@ -155,23 +153,17 @@ class _ContactsState extends State<Contacts> {
     );
   }
 
-  Future postData({
-    required String text,
-  }) async {
-    if (text == "") return;
-
+  void _onContactFormSendTap() {
+    ContactForm.postData(
+      text: _controller.text.replaceFirst('> ', ''),
+    ).then((error) {
+      CustomAlertDialog.show(
+        context: context,
+        message:
+            (error == null) ? "Message sent!" : "Unable to send the message",
+        buttonText: "OK",
+      );
+    });
     _controller.text = "> ";
-    var uriString = 'https://portfolioform.herokuapp.com/messages';
-    var uri = Uri.parse(uriString);
-
-    var map = Map<String, dynamic>();
-    map['text'] = Uri.encodeComponent(text);
-
-    try {
-      http.Response res = await http.post(uri, body: map);
-      print(res.body);
-    } catch (err) {
-      print(err);
-    }
   }
 }

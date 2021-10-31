@@ -1,9 +1,16 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/_components.dart';
 import 'package:portfolio/palette.dart';
 
+/// A BorderedButton with the ability of detecting redundant tap on the button.
+/// If the tap is redundant only ```onTap``` will be triggered otherwise both ```onTap```
+/// and ```onVerifiedTap``` will be triggered.
+///
+/// The time is setted to 10 seconds; for example if user tap twice within 10 seconds
+/// only the first one will be verified and the second one will be considered as redundant.
+///
+/// If a redundant click is detected, an alert will be displayed.
 class FormSendButton extends StatefulWidget {
   const FormSendButton({Key? key, required this.onVerifiedTap, this.onTap})
       : super(key: key);
@@ -44,41 +51,15 @@ class _FormSendButtonState extends State<FormSendButton> {
       return false;
     }
     if (now.difference(_lastOnTap!).inSeconds < 10) {
-      _showMyDialog();
+      CustomAlertDialog.show(
+        context: context,
+        message: 'Please do not spam!',
+        buttonText: 'OK, sorry',
+      );
       return true;
     }
 
     _lastOnTap = now;
     return false;
-  }
-
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: Palette.backgroundColor,
-          content: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                'Please do not spam!',
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            ),
-          ),
-          actions: <Widget>[
-            BorderedButton(
-              title: 'OK, sorry',
-              heigth: 50,
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 }
