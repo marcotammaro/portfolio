@@ -77,6 +77,7 @@ class _ProjectCardState extends State<ProjectCard> {
         const SizedBox(height: 20),
         name,
         SizedBox(height: widget.description != null ? 10 : 0),
+        description,
         const SizedBox(height: 10),
         bottomWidget,
         SizedBox(height: widget.noBottomPadding ? 0 : 20),
