@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/components/_components.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Projects extends StatefulWidget {
   const Projects({Key? key}) : super(key: key);
@@ -37,25 +36,14 @@ class _ProjectsState extends State<Projects> {
           style: CustomTextStyle.h1,
         ),
         CustomText(
-          text:
-              "Have fun discovering which projects I was most passionate about in my journey into the world of programming.",
+          text: '''
+Have fun discovering which projects I was most passionate about in my journey into the world of programming.
+
+Not all projects are listed below, you can still find them all on my github page:
+          ''',
         ),
-        CustomText(
-            text:
-                "Not all projects are listed below, you can still find them all on my github page:"),
-        GestureDetector(
-          onTap: () => launch('https://github.com/marcotammaro'),
-          child: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: Text(
-              "https://github.com/marcotammaro",
-              textAlign: TextAlign.left,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1!
-                  .copyWith(decoration: TextDecoration.underline),
-            ),
-          ),
+        CustomTextWithLinkAndIcon(
+          link: 'https://github.com/marcotammaro',
         ),
       ],
     );

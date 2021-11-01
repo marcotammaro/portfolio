@@ -7,20 +7,20 @@ class CustomTextWithLinkAndIcon extends StatelessWidget {
   const CustomTextWithLinkAndIcon({
     Key? key,
     required this.link,
-    required this.icons,
+    this.icons,
     this.text,
   }) : super(key: key);
 
   final String link;
   final String? text;
-  final List<IconData> icons;
+  final List<IconData>? icons;
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> iconsWidget = icons
+    List<Widget> iconsWidget = (icons ?? [])
         .map<Widget>((e) => Padding(
               padding: const EdgeInsets.only(right: 10.0),
-              child: Icon(e, color: Palette.secondaryColor, size: 28),
+              child: Icon(e, color: Palette.secondaryColor, size: 22),
             ))
         .toList();
 
@@ -28,7 +28,6 @@ class CustomTextWithLinkAndIcon extends StatelessWidget {
       child: Row(
         children: iconsWidget +
             [
-              const SizedBox(width: 10),
               Expanded(
                 child: GestureDetector(
                   onTap: () => launch(link),
