@@ -40,15 +40,15 @@ class _AboutState extends State<About> {
           style: CustomTextStyle.h1,
         ),
         CustomText(
-          text: '''
-$age years old master's student in computer engineering.
+          noBottomPadding: true,
+          text: '''$age years old master's student in computer engineering.
 
 I'm what you could call a technology sufferer, I like everything that works at the rhythm of 0 and 1 and that can be programmed or built with your own hands.
 
-Very passionate about the world of programming, starting from low-level languages up to high-level languages, I can create projects using the most advanced languages such as Flutter(Dart), Swift, Java and C++ using the most efficient data structure and algorithm.\nI can also fully manage SQL/NoSQL databases like Firebase, iCloud and Realm.
+Very passionate about the world of programming, starting from low-level languages up to high-level languages, I can create projects using the most advanced languages such as Flutter(Dart), Swift, Java and C++ using the most efficient data structure and algorithm.
+I can also fully manage SQL/NoSQL databases like Firebase, iCloud and Realm.
 
-I truly love working in group because I'm convinced that teamworking stimulates and improves long work sessions and thanks to shared knowledge everyone can improve himself.
-              ''',
+I truly love working in group because I'm convinced that teamworking stimulates and improves long work sessions and thanks to shared knowledge everyone can improve himself.''',
         ),
       ],
     );
