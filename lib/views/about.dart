@@ -45,11 +45,7 @@ class _AboutState extends State<About> {
         ),
         CustomText(
           text:
-              "Very passionate about the world of programming, starting from low-level languages up to high-level languages, I can create projects using the most advanced languages such as Swift, Flutter(Dart), Java and C++.",
-        ),
-        CustomText(
-          text:
-              "Able to create efficient algorithm and data structure and to manage databases like Firebase, iCloud and Realm or SQL/NoSQL databases.",
+              "Very passionate about the world of programming, starting from low-level languages up to high-level languages, I can create projects using the most advanced languages such as Flutter(Dart), Swift, Java and C++ using the most efficient data structure and algorithm.\nI can also fully manage SQL/NoSQL databases like Firebase, iCloud and Realm.",
         ),
         CustomText(
           noBottomPadding: true,
@@ -96,13 +92,13 @@ class _AboutState extends State<About> {
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
-          text: 'Computer engineering (master)',
+          text: 'Master in Computer Engineering',
           period: '2021 - On Going',
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
           text:
-              'Computer engineering graduated with 99/110\nThesis title: Adversary emulation techniques for cyersecurity assessment',
+              'Computer engineering graduated\nThesis title: Adversary emulation techniques for cyersecurity assessment',
           period: '2017 - 2020',
         ),
         CustomTextWithDates(
@@ -123,12 +119,12 @@ class _AboutState extends State<About> {
           style: CustomTextStyle.h2,
         ),
         CustomTextWithDates(
-          title: 'Apple Swift Student Challenge WWDC 2020 winner',
+          title: 'Apple WWDC 2020 Swift Student Challenge Winner',
           period: '16 Jun 2020',
           noBottomPadding: true,
         ),
         CustomTextWithDates(
-          title: 'GDPR regulation',
+          title: 'GDPR Regulation',
           period: '21 May 2020',
           noBottomPadding: true,
         ),
@@ -148,7 +144,7 @@ class _AboutState extends State<About> {
           noBottomPadding: true,
         ),
         CustomTextWithDates(
-          title: 'Google Digital Marketing Training course',
+          title: 'Google Digital Marketing Training Course',
           period: '13 May 2018',
           noBottomPadding: true,
         ),
