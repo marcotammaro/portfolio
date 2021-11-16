@@ -95,7 +95,7 @@ class _ContactsState extends State<Contacts> {
           alignment: WrapAlignment.end,
           children: [
             Container(
-              width: Responsive.mobileTabletTheshold * 0.5,
+              width: Responsive.mobileTabletTheshold * 0.8,
               constraints: BoxConstraints(minHeight: 150),
               padding: EdgeInsets.all(2),
               decoration: BoxDecoration(
