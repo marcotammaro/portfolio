@@ -62,13 +62,18 @@ I truly love working in group because I'm convinced that teamworking stimulates 
           style: CustomTextStyle.h2,
         ),
         CustomTextWithDates(
+          title: 'Apple Developer Academy',
+          text: 'Pier+ Student',
+          period: '2021 - On Going',
+        ),
+        CustomTextWithDates(
           title: 'Accenture Cyber Hackademy',
           text: 'Student',
           period: '2021',
         ),
         CustomTextWithDates(
           title: 'Apple Developer Academy',
-          text: 'Pier (Intern developer)',
+          text: 'Pier Student',
           period: '2019 - 2020',
         ),
         CustomTextWithDates(
