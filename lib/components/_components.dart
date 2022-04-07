@@ -1,4 +1,4 @@
-export 'navigation_bar.dart';
+export 'custom_navigation_bar.dart';
 export 'bordered_button.dart';
 export "responsive.dart";
 export "custom_text.dart";

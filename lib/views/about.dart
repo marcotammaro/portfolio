@@ -74,6 +74,7 @@ I truly love working in group because I'm convinced that teamworking stimulates 
           period: '2021',
         ),
         CustomTextWithDates(
+          noBottomPadding: true,
           title: 'Apple Developer Academy',
           titleLink: 'https://www.developeracademy.unina.it/it/',
           text: 'Student / Pier Student',

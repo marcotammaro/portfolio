@@ -7,8 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 /// A custom NavigationBar to manage the pages navigation;
 /// once initialized it will display the ```initialIndex``` page that should be within 0 and ```pages.length-1```
 /// where ```pages``` is an array with the titles of the NavigationBar Boxes.
-class NavigationBar extends StatefulWidget {
-  const NavigationBar({
+class CustomNavigationBar extends StatefulWidget {
+  const CustomNavigationBar({
     Key? key,
     required this.initialIndex,
     required this.pages,
@@ -20,10 +20,10 @@ class NavigationBar extends StatefulWidget {
   final int initialIndex;
 
   @override
-  _NavigationBarState createState() => _NavigationBarState();
+  _CustomNavigationBarState createState() => _CustomNavigationBarState();
 }
 
-class _NavigationBarState extends State<NavigationBar> {
+class _CustomNavigationBarState extends State<CustomNavigationBar> {
   /// Constant values
   final double _tabHeigth = 50.0;
 

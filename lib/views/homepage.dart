@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    NavigationBar(
+                    CustomNavigationBar(
                       initialIndex: _currentIndex,
                       pages: tabs.keys.toList(),
                       onIndexChange: (index) {
