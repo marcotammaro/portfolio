@@ -93,13 +93,13 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
-          text: 'Master in Computer Engineering',
+          text: "Master's Degree in Computer Engineering",
           period: '2021 - On Going',
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
           text:
-              'Computer engineering graduated\nThesis title: Adversary emulation techniques for cyersecurity assessment',
+              "Bachelor's Degree in Computer Engineering\nThesis title: Adversary emulation techniques for cyersecurity assessment",
           period: '2017 - 2020',
         ),
         CustomTextWithDates(
