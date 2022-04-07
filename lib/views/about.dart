@@ -62,20 +62,22 @@ I truly love working in group because I'm convinced that teamworking stimulates 
           style: CustomTextStyle.h2,
         ),
         CustomTextWithDates(
+          title: 'System Management S.p.A',
+          titleLink: 'https://sysmanagement.it/',
+          text: 'iOS Developer',
+          period: '2022 - On Going',
+        ),
+        CustomTextWithDates(
           title: 'Accenture Cyber Hackademy',
+          titleLink: 'https://cyberhackademy.unina.it/',
           text: 'Student',
           period: '2021',
         ),
         CustomTextWithDates(
           title: 'Apple Developer Academy',
-          text: 'Pier (Intern developer)',
-          period: '2019 - 2020',
-        ),
-        CustomTextWithDates(
-          noBottomPadding: true,
-          title: 'Apple Developer Academy',
-          text: 'Student',
-          period: '2018 - 2019',
+          titleLink: 'https://www.developeracademy.unina.it/it/',
+          text: 'Student / Pier Student',
+          period: '2018 - 2020',
         ),
       ],
     );
@@ -115,6 +117,17 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         CustomText(
           text: "Certifications",
           style: CustomTextStyle.h2,
+        ),
+        CustomTextWithDates(
+          title:
+              'Palo Alto Networks - Prisma Access SASE Security: Design and Operation',
+          period: '18 Sep 2021',
+          noBottomPadding: true,
+        ),
+        CustomTextWithDates(
+          title: 'Palo Alto Networks - Panorama 9.0: Manage Firewalls at Scale',
+          period: '20 Jul 2021',
+          noBottomPadding: true,
         ),
         CustomTextWithDates(
           title: 'Apple WWDC 2020 Swift Student Challenge Winner',

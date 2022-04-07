@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/responsive.dart';
 import 'package:portfolio/palette.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// A Widget to display a ```title``` with a leading date provided by ```period```
 /// and a bottom description provided by ```text```
+///
+/// If the ```titleLink``` is provided, the title will be clickable and no more selectable
 ///
 /// The ```period``` text will be rounded with square brackets.
 class CustomTextWithDates extends StatefulWidget {
@@ -11,11 +14,13 @@ class CustomTextWithDates extends StatefulWidget {
     Key? key,
     required this.title,
     required this.period,
+    this.titleLink,
     this.text,
     this.noBottomPadding = false,
   }) : super(key: key);
 
   final String title;
+  final String? titleLink;
   final String? text;
   final String period;
   final bool noBottomPadding;
@@ -83,10 +88,21 @@ class _CustomTextWithDatesState extends State<CustomTextWithDates> {
   }
 
   Widget get title {
-    return SelectableText(
-      widget.title,
-      style: Theme.of(context).textTheme.headline3,
-    );
+    return widget.titleLink == null
+        ? SelectableText(
+            widget.title,
+            style: Theme.of(context).textTheme.headline3,
+          )
+        : GestureDetector(
+            onTap: () => launch(widget.titleLink!),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Text(
+                widget.title,
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            ),
+          );
   }
 
   Widget get text {
