@@ -7,7 +7,7 @@ class CustomAlertDialog {
   static Future show({
     required BuildContext context,
     required String message,
-    required String buttonText,
+    String? buttonText,
   }) async {
     return showDialog<void>(
       context: context,
@@ -24,15 +24,17 @@ class CustomAlertDialog {
               ),
             ),
           ),
-          actions: <Widget>[
-            BorderedButton(
-              title: buttonText,
-              heigth: 50,
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+          actions: buttonText != null
+              ? <Widget>[
+                  BorderedButton(
+                    title: buttonText,
+                    heigth: 50,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ]
+              : [],
         );
       },
     );

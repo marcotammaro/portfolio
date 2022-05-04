@@ -118,6 +118,8 @@ class _ContactsState extends State<Contacts> {
                         TextPosition(offset: _controller.text.length),
                       );
                     }
+
+                    setState(() {});
                   },
                   textCapitalization: TextCapitalization.sentences,
                   readOnly: false,
@@ -142,9 +144,18 @@ class _ContactsState extends State<Contacts> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 20),
-              child: FormSendButton(
-                onVerifiedTap: _onContactFormSendTap,
-                onTap: () => FocusScope.of(context).unfocus(),
+              child: Opacity(
+                child: IgnorePointer(
+                  ignoring: _formMessage
+                      .isEmpty, // disable send button if form is empty
+                  child: FormSendButton(
+                    onVerifiedTap: _onContactFormSendTap,
+                    onTap: () => FocusScope.of(context).unfocus(),
+                  ),
+                ),
+                opacity: _formMessage.isEmpty
+                    ? 0.5
+                    : 1, // make button transparent if form is empty
               ),
             ),
           ],
@@ -153,10 +164,29 @@ class _ContactsState extends State<Contacts> {
     );
   }
 
+  /// utility function to retrive the message inserted by
+  /// the user without the "> " prefix
+  String get _formMessage {
+    return _controller.text.replaceFirst('> ', '');
+  }
+
+  /// function called when the user taps on the send button
   void _onContactFormSendTap() {
+    if (_formMessage.isEmpty) return;
+
+    // show "sending" alert
+    CustomAlertDialog.show(
+      context: context,
+      message: "Sending...",
+    );
+
     ContactForm.postData(
-      text: _controller.text.replaceFirst('> ', ''),
+      text: _formMessage,
     ).then((error) {
+      // pop the "sending" alert
+      Navigator.of(context).pop();
+
+      // show result alert
       CustomAlertDialog.show(
         context: context,
         message:
@@ -164,6 +194,8 @@ class _ContactsState extends State<Contacts> {
         buttonText: "OK",
       );
     });
+
+    // reset form text
     _controller.text = "> ";
   }
 }
