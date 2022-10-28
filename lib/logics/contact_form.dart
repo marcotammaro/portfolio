@@ -10,7 +10,7 @@ class ContactForm {
   }) async {
     if (text == "") return null;
 
-    var serverEndpoint = 'https://portfolioform.herokuapp.com/messages';
+    var serverEndpoint = 'https://portfolio.marcotammaro.it/messages';
     var uri = Uri.parse(serverEndpoint);
 
     var body = Map<String, dynamic>();
@@ -18,7 +18,10 @@ class ContactForm {
 
     try {
       http.Response res = await http.post(uri, body: body);
-      if (res.body == "OK") return null;
+      if (res.body == "OK")
+        return null;
+      else
+        return "Error";
     } catch (err) {
       return "Error";
     }

@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/_components.dart';
-import 'package:portfolio/palette.dart';
 
 /// A BorderedButton with the ability of detecting redundant tap on the button.
 /// If the tap is redundant only ```onTap``` will be triggered otherwise both ```onTap```
