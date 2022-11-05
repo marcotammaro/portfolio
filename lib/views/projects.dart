@@ -20,6 +20,8 @@ class _ProjectsState extends State<Projects> {
         CustomDivider(),
         uniuProject,
         CustomDivider(),
+        weatherDashboardProject,
+        CustomDivider(),
         wwdcProject,
         CustomDivider(),
         perkappProject,
@@ -71,6 +73,19 @@ Not all projects are listed below, you can still find them all on my github page
       bottomWidget: CustomTextWithLinkAndIcon(
         link: 'https://bit.ly/3ooIvfG',
         icons: [FontAwesomeIcons.appStoreIos, FontAwesomeIcons.googlePlay],
+      ),
+    );
+  }
+
+  Widget get weatherDashboardProject {
+    return ProjectCard(
+      name: "M5Paper - Modern Weather Dashboard",
+      period: "2022",
+      type: "ESP32 Project",
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link:
+            'https://github.com/marcotammaro/M5Paper---Modern-Weather-Dashboard',
+        icons: [FontAwesomeIcons.github],
       ),
     );
   }
