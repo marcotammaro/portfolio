@@ -41,7 +41,7 @@ class _AboutState extends State<About> {
         ),
         CustomText(
           noBottomPadding: true,
-          text: '''$age years old master's student in computer engineering.
+          text: '''$age years old Software Engineer and iOS Develoepr.
 
 I'm what you could call a technology sufferer, I like everything that works at the rhythm of 0 and 1 and that can be programmed or built with your own hands.
 
@@ -64,7 +64,7 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         CustomTextWithDates(
           title: 'System Management S.p.A',
           titleLink: 'https://sysmanagement.it/',
-          text: 'iOS Developer',
+          text: 'Mobile Developer',
           period: '2022 - On Going',
         ),
         CustomTextWithDates(
@@ -93,13 +93,14 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
-          text: "Master's Degree in Computer Engineering",
-          period: '2021 - On Going',
+          text:
+              "Master's Degree in Software Engineering\nGrade: 110/110 cum laude\nThesis title: Automated OSINT: a modular backend system for seamless tools integration and data retrieval",
+          period: '2021 - 2024',
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
           text:
-              "Bachelor's Degree in Computer Engineering\nThesis title: Adversary emulation techniques for cyersecurity assessment",
+              "Bachelor's Degree in Software Engineering\nThesis title: Adversary emulation techniques for cyersecurity assessment",
           period: '2017 - 2020',
         ),
         CustomTextWithDates(

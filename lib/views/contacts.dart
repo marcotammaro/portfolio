@@ -72,6 +72,11 @@ class _ContactsState extends State<Contacts> {
         CustomTextWithLinkAndIcon(
           link: 'https://www.linkedin.com/in/marcotammaro/',
           icons: [FontAwesomeIcons.linkedin],
+        ),
+        const SizedBox(height: 10),
+        CustomTextWithLinkAndIcon(
+          link: 'https://x.com/marcotammaro42',
+          icons: [FontAwesomeIcons.twitter],
         )
       ],
     );

@@ -16,9 +16,13 @@ class _ProjectsState extends State<Projects> {
       children: [
         intro,
         CustomDivider(),
-        portfolioProject,
+        mercury,
+        CustomDivider(),
+        shortcutArchive,
         CustomDivider(),
         uniuProject,
+        CustomDivider(),
+        portfolioProject,
         CustomDivider(),
         weatherDashboardProject,
         CustomDivider(),
@@ -51,14 +55,29 @@ Not all projects are listed below, you can still find them all on my github page
     );
   }
 
-  Widget get portfolioProject {
+  Widget get mercury {
     return ProjectCard(
-      name: "Portfolio - This website",
-      period: "2021 - On Going",
-      type: "Webpage",
+      name: "Mercury",
+      period: "2024 - On Going",
+      type: "watchOS App",
+      description: "Telegram Client for Apple Watch",
       bottomWidget: CustomTextWithLinkAndIcon(
-        link: 'https://github.com/marcotammaro/portfolio',
-        icons: [FontAwesomeIcons.github],
+        link: 'https://testflight.apple.com/join/4rLEiEzE',
+        icons: [FontAwesomeIcons.appStoreIos],
+      ),
+    );
+  }
+
+  Widget get shortcutArchive {
+    return ProjectCard(
+      name: "Shortcut Archive",
+      period: "2023 - On Going",
+      type: "iOS App",
+      description:
+          "Shortcut Archive is the ultimate app for discovering and sharing shortcuts, it offers a vast library of shortcuts for productivity and entertainment, ensuring a consistent experience across all Apple devices. Join the community to share and collaborate on the best workflows.",
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link: 'https://apps.apple.com/us/app/shortcut-archive/id6474897235',
+        icons: [FontAwesomeIcons.appStoreIos],
       ),
     );
   }
@@ -66,13 +85,25 @@ Not all projects are listed below, you can still find them all on my github page
   Widget get uniuProject {
     return ProjectCard(
       name: "UniU - L'Università Smart",
-      period: "2019 - On Going",
+      period: "2019 - 2023",
       type: "iOS and Android App",
       description:
           "UniU brings your university to your smartphone.\nEverything you need at your fingertips: consult the data relating to your university career, your average, your grades, exams taken and those missing and much more.",
       bottomWidget: CustomTextWithLinkAndIcon(
         link: 'https://bit.ly/3ooIvfG',
         icons: [FontAwesomeIcons.appStoreIos, FontAwesomeIcons.googlePlay],
+      ),
+    );
+  }
+
+  Widget get portfolioProject {
+    return ProjectCard(
+      name: "Portfolio - This website",
+      period: "2021",
+      type: "Webpage",
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link: 'https://github.com/marcotammaro/portfolio',
+        icons: [FontAwesomeIcons.github],
       ),
     );
   }
