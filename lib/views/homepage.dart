@@ -71,8 +71,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get copyright {
+    final now = DateTime.now();
+    final year = now.year;
+
     return Text(
-      "© 2021 Marco Tammaro",
+      "© $year Marco Tammaro",
       style: Theme.of(context).textTheme.headline4,
     );
   }

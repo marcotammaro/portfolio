@@ -32,7 +32,7 @@ class _ContactsState extends State<Contacts> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomText(
-          text: "Let's keep in touch!",
+          text: "Contacts",
           style: CustomTextStyle.h1,
         ),
         email,

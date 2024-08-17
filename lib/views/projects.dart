@@ -38,15 +38,14 @@ class _ProjectsState extends State<Projects> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomText(
-          text: "Some of my projects...",
+          text: "Projects",
           style: CustomTextStyle.h1,
         ),
         CustomText(
-          text: '''
-Have fun discovering which projects I was most passionate about in my journey into the world of programming.
+          text:
+              '''Enjoy exploring the projects that have fueled my passion throughout my programming journey.
 
-Not all projects are listed below, you can still find them all on my github page:
-          ''',
+Not all of them are listed below, but you can discover the full collection on my GitHub page.''',
         ),
         CustomTextWithLinkAndIcon(
           link: 'https://github.com/marcotammaro',
@@ -101,6 +100,8 @@ Not all projects are listed below, you can still find them all on my github page
       name: "Portfolio - This website",
       period: "2021",
       type: "Webpage",
+      description:
+          "A website to display personal projects and informations, entirely made in Flutter.",
       bottomWidget: CustomTextWithLinkAndIcon(
         link: 'https://github.com/marcotammaro/portfolio',
         icons: [FontAwesomeIcons.github],
@@ -113,6 +114,8 @@ Not all projects are listed below, you can still find them all on my github page
       name: "M5Paper - Modern Weather Dashboard",
       period: "2022",
       type: "ESP32 Project",
+      description:
+          "A modern weather dashboard that looks great, made in C++ with PlatformIO and an M5Paper device.",
       bottomWidget: CustomTextWithLinkAndIcon(
         link:
             'https://github.com/marcotammaro/M5Paper---Modern-Weather-Dashboard',

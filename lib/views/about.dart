@@ -41,14 +41,12 @@ class _AboutState extends State<About> {
         ),
         CustomText(
           noBottomPadding: true,
-          text: '''$age years old Software Engineer and iOS Develoepr.
+          text:
+              '''I am a $age year-old Italian software engineer with a passion for developing native applications for Apple platforms.
 
-I'm what you could call a technology sufferer, I like everything that works at the rhythm of 0 and 1 and that can be programmed or built with your own hands.
+I consider myself a technology enthusiast, drawn to everything that operates on the binary principles of 0s and 1s and can be programmed or built by hand.
 
-Very passionate about the world of programming, starting from low-level languages up to high-level languages, I can create projects using the most advanced languages such as Flutter(Dart), Swift, Java and C++ using the most efficient data structure and algorithm.
-I can also fully manage SQL/NoSQL databases like Firebase, iCloud and Realm.
-
-I truly love working in group because I'm convinced that teamworking stimulates and improves long work sessions and thanks to shared knowledge everyone can improve himself.''',
+I have a deep passion for programming, ranging from low-level programming languages to high-level languages. I am particularly in love with the Swift programming language and occasionally, I also spend time working with the ESP32 microcontroller, AWS, and Docker.''',
         ),
       ],
     );
@@ -64,7 +62,7 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         CustomTextWithDates(
           title: 'System Management S.p.A',
           titleLink: 'https://sysmanagement.it/',
-          text: 'Mobile Developer',
+          text: 'Mobile Engineer',
           period: '2022 - On Going',
         ),
         CustomTextWithDates(
@@ -77,7 +75,7 @@ I truly love working in group because I'm convinced that teamworking stimulates 
           noBottomPadding: true,
           title: 'Apple Developer Academy',
           titleLink: 'https://www.developeracademy.unina.it/it/',
-          text: 'Student / Pier Student',
+          text: 'Student (1st year) + Pier Student (2nd year)',
           period: '2018 - 2020',
         ),
       ],
@@ -94,13 +92,13 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
           text:
-              "Master's Degree in Software Engineering\nGrade: 110/110 cum laude\nThesis title: Automated OSINT: a modular backend system for seamless tools integration and data retrieval",
+              "Master's Degree in Software Engineering\nGrade: 110/110 cum laude\nThesis title: \"Automated OSINT: a modular backend system for seamless tools integration and data retrieval\"",
           period: '2021 - 2024',
         ),
         CustomTextWithDates(
           title: 'Università degli Studi di Napoli "Federico II"',
           text:
-              "Bachelor's Degree in Software Engineering\nThesis title: Adversary emulation techniques for cyersecurity assessment",
+              "Bachelor's Degree in Software Engineering\nThesis title: \"Adversary emulation techniques for cyersecurity assessment\"",
           period: '2017 - 2020',
         ),
         CustomTextWithDates(
@@ -119,6 +117,11 @@ I truly love working in group because I'm convinced that teamworking stimulates 
         CustomText(
           text: "Certifications",
           style: CustomTextStyle.h2,
+        ),
+        CustomTextWithDates(
+          title: 'AWS - Certified Cloud Practitioner',
+          period: '17 Jul 2024',
+          noBottomPadding: true,
         ),
         CustomTextWithDates(
           title:
