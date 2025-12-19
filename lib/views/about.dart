@@ -60,10 +60,16 @@ I have a deep passion for programming, ranging from low-level programming langua
           style: CustomTextStyle.h2,
         ),
         CustomTextWithDates(
+          title: 'Kuwait Petroleum Italia S.p.A',
+          titleLink: 'https://www.q8.it',
+          text: 'Business Application Developer & Maintainer',
+          period: '2025 - On Going',
+        ),
+        CustomTextWithDates(
           title: 'System Management S.p.A',
           titleLink: 'https://sysmanagement.it/',
           text: 'Mobile Engineer',
-          period: '2022 - On Going',
+          period: '2022 - 2025',
         ),
         CustomTextWithDates(
           title: 'Accenture Cyber Hackademy',
