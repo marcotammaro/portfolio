@@ -16,6 +16,8 @@ class _ProjectsState extends State<Projects> {
       children: [
         intro,
         CustomDivider(),
+        screenShift,
+        CustomDivider(),
         mercury,
         CustomDivider(),
         shortcutArchive,
@@ -51,6 +53,19 @@ Not all of them are listed below, but you can discover the full collection on my
           link: 'https://github.com/marcotammaro',
         ),
       ],
+    );
+  }
+
+  Widget get screenShift {
+    return ProjectCard(
+      name: "ScreenShift",
+      period: "2026 - On Going",
+      type: "macOS App",
+      description: "Instant Display Control",
+      bottomWidget: CustomTextWithLinkAndIcon(
+        link: 'https://apps.apple.com/us/app/screenshift/id6756219896',
+        icons: [FontAwesomeIcons.appStoreIos],
+      ),
     );
   }
 
